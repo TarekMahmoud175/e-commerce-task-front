@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--clr-black);
+  font-size: var(--fs-16);
+  color: var(--clr-white);
+}
+
+.button:focus {
+  box-shadow: none;
+}
+
+.button:hover {
+  color: var(--clr-white);
+  opacity: 0.9;
+}
