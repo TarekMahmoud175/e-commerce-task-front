@@ -5,7 +5,7 @@ import AddProduct from "./pages/product-add";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route exact path="/" element={<ProductList />}></Route>
         <Route exact path="/productlist" element={<ProductList />}></Route>

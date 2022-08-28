@@ -12,10 +12,11 @@ body {
 *::-webkit-scrollbar {
   width: 5px;
   height: 3px;
+  background-color: white;
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--clr-red);
+  background: var(--clr-black);
 }
 
 :root {

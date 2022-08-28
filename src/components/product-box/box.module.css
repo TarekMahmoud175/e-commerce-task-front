@@ -1,0 +1,23 @@
+.mainBox {
+  border: 1px solid var(--clr-black);
+  border-radius: 10px;
+}
+.checkbox {
+  width: 30%;
+  cursor: pointer;
+}
+/*product */
+.sku {
+    color: var(--clr-grey);
+    font-weight: 400 !important;
+    font-size: var(--fs-18) !important;
+}
+.name{
+    font-weight: 500 !important;
+    font-size: var(--fs-20) !important;
+}
+
+.price,.specs{
+    font-weight: 500 !important;
+    font-size: var(--fs-18) !important;
+}

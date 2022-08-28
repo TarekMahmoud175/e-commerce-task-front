@@ -12,5 +12,6 @@
 
 .button:hover {
   color: var(--clr-white);
-  opacity: 0.9;
+  opacity: 0.8;
+  background-color: var(--clr-black);
 }
