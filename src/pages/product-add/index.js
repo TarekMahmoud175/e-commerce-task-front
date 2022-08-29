@@ -109,7 +109,7 @@ const AddProduct = () => {
               )}
             />
 
-<Controller
+            <Controller
               name="price"
               control={control}
               rules={{ required: "Price is required" }}
@@ -124,8 +124,7 @@ const AddProduct = () => {
               )}
             />
 
-
-<Controller
+            <Controller
               name="price"
               control={control}
               rules={{ required: "Price is required" }}
@@ -140,7 +139,7 @@ const AddProduct = () => {
               )}
             />
 
-<Controller
+            <Controller
               name="price"
               control={control}
               rules={{ required: "Price is required" }}
@@ -155,7 +154,7 @@ const AddProduct = () => {
               )}
             />
 
-<Controller
+            <Controller
               name="price"
               control={control}
               rules={{ required: "Price is required" }}
@@ -169,7 +168,6 @@ const AddProduct = () => {
                 />
               )}
             />
-            
 
             <div className="row my-3">
               <div className="col-md-6 d-flex justify-content-between w-100">
