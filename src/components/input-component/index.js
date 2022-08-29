@@ -12,6 +12,7 @@ const InputComponent = ({
   errors = "",
   // touched,
   textarea = false,
+  id = "",
   ...prop
 }) => {
   return (
@@ -23,6 +24,7 @@ const InputComponent = ({
         onBlur={() => {
           handleBlur();
         }}
+        id={id}
         placeholder={placeholder}
         type={type}
         value={value}

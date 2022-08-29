@@ -20,7 +20,7 @@ const ProductList = ({ history }) => {
             <ButtonComponent
               title="ADD"
               className="me-2"
-              onClickAction={() => navigate("/AddProduct")}
+              onClickAction={() => navigate("/add-product")}
             />
             <ButtonComponent title="MASS DELETE" id="delete-product-btn" />
           </div>
