@@ -1,5 +1,12 @@
 .pageTitle {
-    font-size: var(--fs-30) !important;
-    font-weight: 600 !important;
-  }
-  
+  font-size: var(--fs-30) !important;
+  font-weight: 600 !important;
+}
+
+.cancelbtn {
+  background-color: var(--clr-red) !important;
+}
+.cancelbtn:focus,.cancelbtn:active{
+  background-color: var(--clr-red) !important;
+
+}

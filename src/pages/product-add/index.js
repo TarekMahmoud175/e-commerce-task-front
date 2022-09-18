@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./addProduct.module.css";
 import SeparateLine from "../../components/separate-line";
 import Text from "../../components/text";
@@ -29,7 +29,7 @@ const AddProduct = () => {
     )
 
   }
-  const bookSpec = () => {
+  const BookSpec = () => {
     return (
       <Controller
         name="Weight_kg"
@@ -47,7 +47,7 @@ const AddProduct = () => {
       />
     )
   }
-  const furnitureSpec = () => {
+  const FurnitureSpec = () => {
     return (
       <>
         <Controller
@@ -101,9 +101,11 @@ const AddProduct = () => {
 
   const specObj = {
     "DVD": <DvdSpec />,
-    "BOOK": <bookSpec />,
-    "FURNITURE": <furnitureSpec />,
+    "BOOK": <BookSpec />,
+    "FURNITURE": <FurnitureSpec />,
   }
+
+  const [ProductType, setProductType] = useState("");
   const {
     control,
     formState: { errors },
@@ -180,7 +182,7 @@ const AddProduct = () => {
                   className="mt-2 "
                   id="productType"
                   errors={errors.productType?.message}
-                  handleChange={(e) => { console.log(e.target.value); setValue("productType", e.target.value) }}
+                  handleChange={(e) => { setProductType(e.target.value); setValue("productType", e.target.value) }}
                   placeholder={"Product Type"}
                   options={[
                     { label: "DVD", value: "DVD" },
@@ -192,7 +194,7 @@ const AddProduct = () => {
               )}
             />
 
-
+            {ProductType ? specObj[ProductType] : null}
 
 
 
@@ -202,7 +204,7 @@ const AddProduct = () => {
                 <ButtonComponent title={"Add"} className={"w-100 me-2"} />
                 <ButtonComponent
                   title={"Cancel"}
-                  className={"w-100 btn-danger"}
+                  className={`w-100 btn-danger ${Styles.cancelbtn}`}
                 />
               </div>
             </div>
