@@ -6,8 +6,10 @@
   color: var(--clr-white);
 }
 
-.button:focus {
+.button:focus , .button:active {
   box-shadow: none;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
 }
 
 .button:hover {

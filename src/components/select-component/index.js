@@ -24,6 +24,7 @@ const SelectComponent = ({
         }}
         value={value}
         {...prop}
+        onChange={handleChange}
       >
         <option value={""} selected disabled hidden>
           {placeholder}

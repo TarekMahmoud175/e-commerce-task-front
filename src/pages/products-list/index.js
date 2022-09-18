@@ -30,7 +30,7 @@ const ProductList = ({ history }) => {
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, , 10, 11, 12, 13, 14, 15].map(
             (item, index) => {
               return (
-                <div className="col-lg-3" key={"product" + item}>
+                <div className="col-lg-2 col-md-3 col-sm-6 col-xs-6" key={"product" + item}>
                   <ProductBox />
                 </div>
               );
