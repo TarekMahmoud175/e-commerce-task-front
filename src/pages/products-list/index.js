@@ -6,7 +6,7 @@ import ButtonComponent from "../../components/button-component";
 import { useNavigate } from "react-router-dom";
 import ProductBox from "../../components/product-box";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const navigate = useNavigate();
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Styles from "./addProduct.module.css";
 import SeparateLine from "../../components/separate-line";
 import Text from "../../components/text";
@@ -6,10 +6,21 @@ import { useForm, Controller } from "react-hook-form";
 import InputComponent from "../../components/input-component";
 import SelectComponent from "../../components/select-component";
 import ButtonComponent from "../../components/button-component";
+import { useNavigate } from "react-router-dom";
 
 
 const AddProduct = () => {
-  const DvdSpec = () => {
+  const navigate = useNavigate();
+
+  const DvdSpec = ({ setValue }) => {
+
+    useEffect(() => {
+      setValue("Weight_kg", null)
+      setValue("width", null)
+      setValue("length", null)
+      setValue("height", null)
+    }, []);
+
     return (
       <Controller
         name="size_mb"
@@ -29,7 +40,13 @@ const AddProduct = () => {
     )
 
   }
-  const BookSpec = () => {
+  const BookSpec = ({ setValue }) => {
+    useEffect(() => {
+      setValue("size_mb", null)
+      setValue("width", null)
+      setValue("length", null)
+      setValue("height", null)
+    }, []);
     return (
       <Controller
         name="Weight_kg"
@@ -47,7 +64,11 @@ const AddProduct = () => {
       />
     )
   }
-  const FurnitureSpec = () => {
+  const FurnitureSpec = ({ setValue }) => {
+    useEffect(() => {
+      setValue("size_mb", null)
+      setValue("Weight_kg", null)
+    }, []);
     return (
       <>
         <Controller
@@ -99,11 +120,7 @@ const AddProduct = () => {
 
   }
 
-  const specObj = {
-    "DVD": <DvdSpec />,
-    "BOOK": <BookSpec />,
-    "FURNITURE": <FurnitureSpec />,
-  }
+
 
   const [ProductType, setProductType] = useState("");
   const {
@@ -116,6 +133,12 @@ const AddProduct = () => {
   const onSubmit = (values) => {
     console.log(values);
   };
+  
+  const specObj = {
+    "DVD": <DvdSpec setValue={setValue} />,
+    "BOOK": <BookSpec setValue={setValue} />,
+    "FURNITURE": <FurnitureSpec setValue={setValue} />,
+  }
 
   return (
     <div className={`container py-3`}>
@@ -205,6 +228,7 @@ const AddProduct = () => {
                 <ButtonComponent
                   title={"Cancel"}
                   className={`w-100 btn-danger ${Styles.cancelbtn}`}
+                  onClickAction={() => { navigate("/") }}
                 />
               </div>
             </div>
