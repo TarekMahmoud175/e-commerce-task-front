@@ -5,9 +5,12 @@ import SeparateLine from "../../components/separate-line";
 import ButtonComponent from "../../components/button-component";
 import { useNavigate } from "react-router-dom";
 import ProductBox from "../../components/product-box";
+import UseGetProducts from "../../hooks/useGetProducts";
 
 const ProductList = () => {
   const navigate = useNavigate();
+
+  const Products = UseGetProducts()
   return (
     <div>
       <div className="container py-3">
@@ -27,7 +30,7 @@ const ProductList = () => {
         </div>
         <SeparateLine />
         <div className="row mt-2">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, , 10, 11, 12, 13, 14, 15].map(
+          {Products?.map(
             (item, index) => {
               return (
                 <div className="col-lg-2 col-md-3 col-sm-6 col-xs-6" key={"product" + item}>

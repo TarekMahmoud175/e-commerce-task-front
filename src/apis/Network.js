@@ -7,7 +7,7 @@ export class Network {
   }
 
   static async fetch(url, init, addAuth) {
-    const requestedUrl = ApiUrl + url;
+    const requestedUrl = DomainUrl + url;
 
     const response = await fetch(requestedUrl, {
       mode: "cors",

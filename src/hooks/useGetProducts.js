@@ -5,7 +5,7 @@ const UseGetProducts = () => {
     const [Products, setProducts] = useState([]);
     useEffect(() => {
         ProductServices.getProducts().then(res => {
-
+            setProducts(res?.products)
         }).catch(err => console.log(err))
     }, [])
     return Products

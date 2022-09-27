@@ -1,2 +1,2 @@
-const DomainUrl = `https://backend.masterstore.bit68.com/en/api`;
+const DomainUrl = `http://localhost:7200`;
 export default DomainUrl;

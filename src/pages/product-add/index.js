@@ -120,8 +120,6 @@ const AddProduct = () => {
 
   }
 
-
-
   const [ProductType, setProductType] = useState("");
   const {
     control,
@@ -133,7 +131,7 @@ const AddProduct = () => {
   const onSubmit = (values) => {
     console.log(values);
   };
-  
+
   const specObj = {
     "DVD": <DvdSpec setValue={setValue} />,
     "BOOK": <BookSpec setValue={setValue} />,
