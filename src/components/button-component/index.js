@@ -6,7 +6,7 @@ const ButtonComponent = ({
   className = "",
   style = {},
   onClickAction = () => {},
-  isLoading = false,
+  disabled = false,
   title,
   id = "",
 }) => {
@@ -19,7 +19,7 @@ const ButtonComponent = ({
       onClick={() => {
         onClickAction();
       }}
-      disabled={isLoading}
+      disabled={disabled}
     >
       {title}
     </button>

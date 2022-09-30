@@ -9,6 +9,6 @@ export const ProductEndPoints = {
   },
   deleteProducts: {
     url: `delete_products.php`,
-    method: "DELETE"
+    method: "POST"
   }
 };

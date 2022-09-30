@@ -5,8 +5,12 @@
   font-size: var(--fs-16);
   color: var(--clr-white);
 }
-
-.button:focus , .button:active {
+.button:disabled {
+  background-color: grey;
+  color: var(--clr-white);
+}
+.button:focus,
+.button:active {
   box-shadow: none;
   background-color: var(--clr-black);
   color: var(--clr-white);

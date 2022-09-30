@@ -1,48 +1,41 @@
 import DomainUrl from "./Domains";
+import axios from "axios";
+
+let headers = {}
+
+const _axios = axios.create({
+  baseURL: DomainUrl,
+  headers
+})
 
 
-export class Network {
-  constructor() {
-    this.bearer = "";
-  }
-
-  static async fetch(url, init, addAuth) {
-    const requestedUrl = DomainUrl + url;
-
-    const response = await fetch(requestedUrl, {
-      mode: "cors",
-      ...init,
-      headers: Network.getHeaders(init.headers, addAuth),
-    });
-
-    let promise;
-    if (![204, 201, 200].includes(response.status)) {
-      let promise = response.json().then((data) => {
-        return Promise.reject(data);
-      });
-      return promise.catch((error) => {
-        return Promise.reject(error);
-      });
+_axios.interceptors.request.use(
+  async (config) => {
+    config.headers = {
+      ...config.headers,
+      'Content-Type': 'application/json'
     }
-    else if (response.status == 204) promise = Promise.resolve({});
-    else promise = response.json();
-
-    return promise;
+    console.log("config ===>", config)
+    return config
+  },
+  (err) => {
+    return Promise.reject(err?.response?.data)
   }
+)
 
-  static getHeaders(originalHeaders, auth) {
-    let headers = {};
-    if (auth) {
-      this.bearer = localStorage.getItem("bearer");
-      headers.Authorization = `Token ${this.bearer}`;
-    }
-    headers = {
-      ...headers,
-      ...originalHeaders,
-      "content-type": "application/json",
-      Accept: "application/json",
-    };
 
-    return headers;
+_axios.interceptors.response.use(
+  response => {
+    return response.data
+  },
+  err => {
+    //backend server error
+    if (err?.response?.data)
+      return Promise.reject(err?.response?.data);
+    //For cancellation
+    if (err?.message)
+      return Promise.reject(err);
   }
-}
+)
+
+export default _axios

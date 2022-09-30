@@ -1,27 +1,20 @@
 import { ProductEndPoints } from "../EndPoints/ProductsEndPoints";
-import { Network } from "../Network";
+import _axios from "../Network";
 
 
 export class ProductServices {
 
   static getProducts() {
-    return Network.fetch(ProductEndPoints.getProducts.url, {
-      method: ProductEndPoints.getProducts.method
-    })
+    return _axios.get(ProductEndPoints.getProducts.url);
   }
 
   static AddProduct(data) {
-    return Network.fetch(ProductEndPoints.addProduct.url, {
-      method: ProductEndPoints.addProduct.method,
-      body: JSON.stringify(data),
-    })
+    return _axios.post(ProductEndPoints.addProduct.url, { ...data })
   }
 
   static deleteProducts(data) {
-    return Network.fetch(ProductEndPoints.deleteProducts.url, {
-      method: ProductEndPoints.deleteProducts.method,
-      body: JSON.stringify(data),
-    })
+    console.log(data)
+    return _axios.post(ProductEndPoints.deleteProducts.url, { ...data })
   }
 
 }

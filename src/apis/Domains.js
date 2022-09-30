@@ -1,2 +1,2 @@
-const DomainUrl = `http://localhost:7200`;
+const DomainUrl = `http://scandiwebbe.000webhostapp.com`;
 export default DomainUrl;
