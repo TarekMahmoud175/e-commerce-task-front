@@ -7,6 +7,7 @@ import InputComponent from "../../components/input-component";
 import SelectComponent from "../../components/select-component";
 import ButtonComponent from "../../components/button-component";
 import { useNavigate } from "react-router-dom";
+import { ProductServices } from "../../apis/Services/ProductsServices";
 
 
 const AddProduct = () => {
@@ -25,7 +26,7 @@ const AddProduct = () => {
       <Controller
         name="size_mb"
         control={control}
-        rules={{ required: "size is required" }}
+        rules={{ required: "Please, submit required data" }}
         render={({ field }) => (
           <InputComponent
             className="mt-2"
@@ -51,7 +52,7 @@ const AddProduct = () => {
       <Controller
         name="Weight_kg"
         control={control}
-        rules={{ required: "Weight is required" }}
+        rules={{ required: "Please, submit required data" }}
         render={({ field }) => (
           <InputComponent
             className="mt-2"
@@ -74,7 +75,7 @@ const AddProduct = () => {
         <Controller
           name="width"
           control={control}
-          rules={{ required: "Width is required" }}
+          rules={{ required: "Please, submit required data" }}
           render={({ field }) => (
             <InputComponent
               className="mt-2"
@@ -89,7 +90,7 @@ const AddProduct = () => {
         <Controller
           name="length"
           control={control}
-          rules={{ required: "Length is required" }}
+          rules={{ required: "Please, submit required data" }}
           render={({ field }) => (
             <InputComponent
               className="mt-2"
@@ -104,7 +105,7 @@ const AddProduct = () => {
         <Controller
           name="height"
           control={control}
-          rules={{ required: "Height is required" }}
+          rules={{ required: "Please, submit required data" }}
           render={({ field }) => (
             <InputComponent
               className="mt-2"
@@ -120,6 +121,8 @@ const AddProduct = () => {
 
   }
 
+
+
   const [ProductType, setProductType] = useState("");
   const {
     control,
@@ -129,13 +132,27 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = (values) => {
-    console.log(values);
+    let reqObj = {
+      'sku': values['sku'],
+      'name': values['name'],
+      'price': Number(values['price']),
+      'type': ProductType,
+      'dvd_size_mb': values['size_mb'],
+      'book_weight_kg': values['Weight_kg'],
+      'furniture_width_cm': values['width'],
+      'furniture_height_cm': values['height'],
+      'furniture_length_cm': values['length'],
+    };
+    ProductServices.AddProduct(reqObj).then(res => {
+      navigate("/")
+    }).catch(err => { console.log(err) })
+
   };
 
   const specObj = {
-    "DVD": <DvdSpec setValue={setValue} />,
-    "BOOK": <BookSpec setValue={setValue} />,
-    "FURNITURE": <FurnitureSpec setValue={setValue} />,
+    "dvd": <DvdSpec setValue={setValue} />,
+    "book": <BookSpec setValue={setValue} />,
+    "furniture": <FurnitureSpec setValue={setValue} />,
   }
 
   return (
@@ -152,7 +169,7 @@ const AddProduct = () => {
             <Controller
               name="sku"
               control={control}
-              rules={{ required: "SKU is required" }}
+              rules={{ required: "Please, submit required data" }}
               render={({ field }) => (
                 <InputComponent
                   className="mt-2"
@@ -167,7 +184,7 @@ const AddProduct = () => {
             <Controller
               name="name"
               control={control}
-              rules={{ required: "Name is required" }}
+              rules={{ required: "Please, submit required data" }}
               render={({ field }) => (
                 <InputComponent
                   className="mt-2"
@@ -197,7 +214,7 @@ const AddProduct = () => {
             <Controller
               name="productType"
               control={control}
-              rules={{ required: "Product type is required" }}
+              rules={{ required: "Please, submit required data" }}
               render={({ field }) => (
                 <SelectComponent
                   className="mt-2 "
@@ -206,9 +223,9 @@ const AddProduct = () => {
                   handleChange={(e) => { setProductType(e.target.value); setValue("productType", e.target.value) }}
                   placeholder={"Product Type"}
                   options={[
-                    { label: "DVD", value: "DVD" },
-                    { label: "Book", value: "BOOK" },
-                    { label: "Furniture", value: "FURNITURE" },
+                    { label: "DVD", value: "dvd" },
+                    { label: "Book", value: "book" },
+                    { label: "Furniture", value: "furniture" },
                   ]}
                   {...field}
                 />

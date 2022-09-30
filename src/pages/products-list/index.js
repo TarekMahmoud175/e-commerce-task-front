@@ -12,11 +12,11 @@ const ProductList = () => {
   const navigate = useNavigate();
   let Products = UseGetProducts();
   const [SelectedProducts, setSelectedProducts] = useState([]);
-  const handleChecked = (id) => SelectedProducts.includes(id) ? true : false;
+  const handleChecked = (id) => SelectedProducts.includes(Number(id)) ? true : false;
   const handleSelect = (id) => {
     let newSelectionArr = [...SelectedProducts]
-    let index = newSelectionArr.findIndex((x) => x == id)
-    if (index == -1) newSelectionArr.push(id);
+    let index = newSelectionArr.findIndex((x) => Number(x) == Number(id))
+    if (index == -1) newSelectionArr.push(Number(id));
     else newSelectionArr.splice(index, 1)
     setSelectedProducts(newSelectionArr)
   }
