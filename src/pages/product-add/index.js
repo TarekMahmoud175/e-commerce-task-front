@@ -32,7 +32,7 @@ const AddProduct = () => {
         render={({ field }) => (
           <InputComponent
             className="mt-2"
-            id="size (MB)"
+            id="size"
             errors={errors.size_mb?.message}
             placeholder={"size"}
             type="number"
@@ -59,7 +59,7 @@ const AddProduct = () => {
         render={({ field }) => (
           <InputComponent
             className="mt-2"
-            id="Weight"
+            id="weight"
             errors={errors.Weight_kg?.message}
             placeholder={"Weight"}
             type="number"
