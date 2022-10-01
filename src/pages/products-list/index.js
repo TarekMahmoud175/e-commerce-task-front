@@ -64,7 +64,7 @@ const ProductList = () => {
           {Products?.map(
             (item, index) => {
               return (
-                <div className="col-lg-2 col-md-3 col-sm-6 col-xs-6" key={"product index =>" + index}>
+                <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6" key={"product index =>" + index}>
                   <ProductBox item={item} handleCheck={handleSelect} isChecked={handleChecked} />
                 </div>
               );
