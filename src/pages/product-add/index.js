@@ -8,6 +8,8 @@ import SelectComponent from "../../components/select-component";
 import ButtonComponent from "../../components/button-component";
 import { useNavigate } from "react-router-dom";
 import { ProductServices } from "../../apis/Services/ProductsServices";
+import toast from "react-hot-toast";
+
 
 
 const AddProduct = () => {
@@ -33,6 +35,7 @@ const AddProduct = () => {
             id="size (MB)"
             errors={errors.size_mb?.message}
             placeholder={"size"}
+            type="number"
             {...field}
           />
         )}
@@ -59,6 +62,7 @@ const AddProduct = () => {
             id="Weight"
             errors={errors.Weight_kg?.message}
             placeholder={"Weight"}
+            type="number"
             {...field}
           />
         )}
@@ -82,6 +86,7 @@ const AddProduct = () => {
               id="width"
               errors={errors.width?.message}
               placeholder={"width"}
+              type="number"
               {...field}
             />
           )}
@@ -97,6 +102,7 @@ const AddProduct = () => {
               id="length"
               errors={errors.length?.message}
               placeholder={"length"}
+              type="number"
               {...field}
             />
           )}
@@ -112,6 +118,7 @@ const AddProduct = () => {
               id="height"
               errors={errors.height?.message}
               placeholder={"height"}
+              type="number"
               {...field}
             />
           )}
@@ -120,8 +127,6 @@ const AddProduct = () => {
     )
 
   }
-
-
 
   const [ProductType, setProductType] = useState("");
   const {
@@ -144,9 +149,11 @@ const AddProduct = () => {
       'furniture_length_cm': values['length'],
     };
     ProductServices.AddProduct(reqObj).then(res => {
-      navigate("/")
-    }).catch(err => { console.log(err) })
-
+      if (res.success == true) navigate("/")
+      else {
+        console.log("i entered here",res);
+        toast.error(res.message);}
+    })
   };
 
   const specObj = {

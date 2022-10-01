@@ -16,7 +16,7 @@ const ProductBox = ({ item = {}, handleCheck = () => { }, isChecked }) => {
         <input
           className={`${Styles.checkbox} delete-chekbox`}
           type="checkbox"
-          onClick={() => handleCheck(item?.id)}
+          onChange={() => handleCheck(item?.id)}
           checked={isChecked(item?.id)}
         />
       </div>
