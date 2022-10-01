@@ -10,7 +10,7 @@ import { ProductServices } from "../../apis/Services/ProductsServices";
 
 const ProductList = () => {
   const navigate = useNavigate();
-  
+
   const [ShouldReload, setShouldReload] = useState(0);
   let Products = UseGetProducts({ reload: ShouldReload });
 
@@ -24,17 +24,16 @@ const ProductList = () => {
     setSelectedProducts(newSelectionArr)
   }
 
-  const [isLoading, setisLoading] = useState(false);
   const HandleBulkDelete = () => {
-    setisLoading(true)
-    let reqObject = { ids: SelectedProducts }
-    ProductServices.deleteProducts(reqObject)
-      .then(res => {
-        setSelectedProducts([]);
-        setShouldReload(prev => prev + 1)
-      })
-      .catch(err => console.log(err))
-      .finally(() => setisLoading(false))
+    if (SelectedProducts.length > 0) {
+      let reqObject = { ids: SelectedProducts }
+      ProductServices.deleteProducts(reqObject)
+        .then(res => {
+          setSelectedProducts([]);
+          setShouldReload(prev => prev + 1)
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   return (
@@ -54,7 +53,6 @@ const ProductList = () => {
             <ButtonComponent
               title="MASS DELETE"
               id="delete-product-btn"
-              disabled={SelectedProducts.length == 0 || isLoading}
               onClickAction={HandleBulkDelete}
             />
           </div>

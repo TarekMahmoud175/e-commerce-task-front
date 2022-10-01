@@ -151,7 +151,6 @@ const AddProduct = () => {
     ProductServices.AddProduct(reqObj).then(res => {
       if (res.success == true) navigate("/")
       else {
-        console.log("i entered here", res);
         toast.error(res.message);
       }
     })
@@ -248,7 +247,7 @@ const AddProduct = () => {
 
             <div className="row my-3">
               <div className="col-md-6 d-flex justify-content-between w-100">
-                <ButtonComponent title={"Add"} className={"w-100 me-2"} />
+                <ButtonComponent title={"Save"} className={"w-100 me-2"} />
                 <button
                   className={`w-100 btn-danger btn ${Styles.cancelbtn}`}
                   onClick={() => { navigate("/") }}

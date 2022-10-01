@@ -14,7 +14,7 @@ const ProductBox = ({ item = {}, handleCheck = () => { }, isChecked }) => {
     <div className={`${Styles.mainBox} p-3 my-2 h-100`}>
       <div className="row justify-content-start">
         <input
-          className={`${Styles.checkbox} delete-chekbox`}
+          className={`${Styles.checkbox} delete-checkbox`}
           type="checkbox"
           onChange={() => handleCheck(item?.id)}
           checked={isChecked(item?.id)}
