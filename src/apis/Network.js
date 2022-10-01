@@ -50,7 +50,6 @@ export class Network {
     const response = await fetch(requestedUrl, {
       mode: "cors",
       ...init,
-      headers: { "Content-Type": "application/json", Accept: "*/*" }
     });
 
     let promise;
