@@ -213,6 +213,7 @@ const AddProduct = () => {
                   id="price"
                   errors={errors.price?.message}
                   placeholder={"price"}
+                  type="number"
                   {...field}
                 />
               )}
