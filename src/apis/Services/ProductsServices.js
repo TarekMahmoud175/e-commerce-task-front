@@ -5,19 +5,6 @@ import { Network } from "../Network";
 
 export class ProductServices {
 
-  // static getProducts() {
-  //   return _axios.get(ProductEndPoints.getProducts.url);
-  // }
-
-  // static AddProduct(data) {
-  //   return _axios.post(ProductEndPoints.addProduct.url, { ...data })
-  // }
-
-  // static deleteProducts(data) {
-  //   return _axios.post(ProductEndPoints.deleteProducts.url, { ...data })
-  // }
-
-
   static getProducts() {
     return Network.fetch(ProductEndPoints.getProducts.url, {
       method: ProductEndPoints.getProducts.method

@@ -5,8 +5,11 @@
 
 .cancelbtn {
   background-color: var(--clr-red) !important;
+  color: var(--clr-white) !important;
+  border: none;
+  border-radius: 10px;
 }
-.cancelbtn:focus,.cancelbtn:active{
-  background-color: var(--clr-red) !important;
-
+.cancelbtn:focus,
+.cancelbtn:active {
+  background-color: var(--clr-red) !important
 }

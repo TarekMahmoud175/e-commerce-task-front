@@ -12,12 +12,12 @@
 .button:focus,
 .button:active {
   box-shadow: none;
-  background-color: var(--clr-black);
-  color: var(--clr-white);
+  background-color: var(--clr-black) !important;
+  color: var(--clr-white) !important;
 }
 
 .button:hover {
-  color: var(--clr-white);
+  color: var(--clr-white) !important;
   opacity: 0.8;
-  background-color: var(--clr-black);
+  background-color: var(--clr-black) !important;
 }
