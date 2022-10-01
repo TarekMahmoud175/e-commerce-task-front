@@ -44,19 +44,13 @@ import axios from "axios";
 
 
 export class Network {
-  constructor() {
-  }
-
   static async fetch(url, init) {
     const requestedUrl = DomainUrl + url;
 
-    console.log("requestedUrl", requestedUrl);
     const response = await fetch(requestedUrl, {
       mode: "cors",
       ...init,
-      headers: Network.getHeaders(init.headers),
     });
-    console.log("network response", response)
 
     let promise;
     if (![204, 201, 200].includes(response.status)) {
@@ -73,15 +67,5 @@ export class Network {
     return promise;
   }
 
-  static getHeaders(originalHeaders) {
-    let headers = {};
-    headers = {
-      ...headers,
-      ...originalHeaders,
-      "content-Type": "application/json",
-      Accept: "application/json",
-    };
 
-    return headers;
-  }
 }

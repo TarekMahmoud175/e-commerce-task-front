@@ -10,7 +10,10 @@ import { ProductServices } from "../../apis/Services/ProductsServices";
 
 const ProductList = () => {
   const navigate = useNavigate();
-  let Products = UseGetProducts();
+  
+  const [ShouldReload, setShouldReload] = useState(0);
+  let Products = UseGetProducts({ reload: ShouldReload });
+
   const [SelectedProducts, setSelectedProducts] = useState([]);
   const handleChecked = (id) => SelectedProducts.includes(Number(id)) ? true : false;
   const handleSelect = (id) => {
@@ -27,8 +30,8 @@ const ProductList = () => {
     let reqObject = { ids: SelectedProducts }
     ProductServices.deleteProducts(reqObject)
       .then(res => {
-        Products = UseGetProducts();
         setSelectedProducts([]);
+        setShouldReload(prev => prev + 1)
       })
       .catch(err => console.log(err))
       .finally(() => setisLoading(false))
