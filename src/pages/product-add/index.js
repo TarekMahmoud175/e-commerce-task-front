@@ -36,6 +36,7 @@ const AddProduct = () => {
             errors={errors.size_mb?.message}
             placeholder={"size"}
             type="number"
+            step={0.0001}
             {...field}
           />
         )}
@@ -63,6 +64,7 @@ const AddProduct = () => {
             errors={errors.Weight_kg?.message}
             placeholder={"Weight"}
             type="number"
+            step={0.0001}
             {...field}
           />
         )}
@@ -87,6 +89,7 @@ const AddProduct = () => {
               errors={errors.width?.message}
               placeholder={"width"}
               type="number"
+              step={0.0001}
               {...field}
             />
           )}
@@ -103,6 +106,7 @@ const AddProduct = () => {
               errors={errors.length?.message}
               placeholder={"length"}
               type="number"
+              step={0.0001}
               {...field}
             />
           )}
@@ -119,6 +123,7 @@ const AddProduct = () => {
               errors={errors.height?.message}
               placeholder={"height"}
               type="number"
+              step={0.0001}
               {...field}
             />
           )}
@@ -215,6 +220,7 @@ const AddProduct = () => {
                   placeholder={"price"}
                   type="number"
                   {...field}
+                  step={0.0001}
                 />
               )}
             />
